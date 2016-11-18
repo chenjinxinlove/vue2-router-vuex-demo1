@@ -21,16 +21,16 @@
    },
    computed: {
      isShowSearch: function () {
-       return this.$store.state.comn.indexConf.isShowSearch
+       return this.$store.state.comm.indexConf.isShowSearch
      },
      title: function () {
-       return this.$store.state.comn.indexConf.title
+       return this.$store.state.comm.indexConf.title
      },
      isBack: function () {
-       return this.$store.state.comn.indexConf.isBack
+       return this.$store.state.comm.indexConf.isBack
      },
      isShare: function () {
-       return this.$store.state.comn.indexConf.isShare
+       return this.$store.state.comm.indexConf.isShare
      }
    },
    methods: {

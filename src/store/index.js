@@ -1,32 +1,70 @@
 /**
- * Created by chen on 2016/11/17.
+ * Created by linhaifeng on 2016/10/28.
  */
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
+Vue.use(Vuex);
 
-Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    comn: {
-      loading: false,
-      indexConf: {
-        isFooter: true,
-        isShowSearch: true,
-        isBack: false,
-        isShare: false,
-        title: ''
+    //评论相关
+    reply:{
+      isComment: false,  //开启评论,
+      name:'',
+      articleId:'',
+      commentId:'',
+      type:'comment',  // reply or comment
+      content:null,
+      comment:{}
+    },
+    //公共
+    comm:{
+      loading:false,
+      indexConf:{
+        isFooter:true,  //是否显示底部
+        isSearch:true,  //是否显示搜索
+        isBack:false, //是否显示返回
+        isShare:false,//是否显示分享
+        title:''//标题
       }
     }
+
   },
   mutations: {
-    changeIndexConf: (state, data) => {
-      Object.assign(state.comn.indexConf, data)
+    /*
+     * 评论回复
+     * @param name 回复的用户名
+     * */
+    reply:(state,data) => {
+
+      if(data.name==state.reply.name&&state.reply.isComment&&data.commentId==state.reply.commentId){
+        state.reply.isComment = false;
+      }else{
+        state.reply.name = data.name;
+        state.reply.commentId = data.commentId;
+        state.reply.isComment = true;
+      }
+
     },
-    isLoading: (state, status) => {
-      state.comn.loading = status
-    }
+    /*
+     * loading的显示
+     * */
+    isLoading:(state,status) => {
+
+      state.comm.loading = status;
+    },
+    /*
+     * 修改header的信息
+     *
+     * */
+    changeIndexConf:(state,data)=>{
+
+      Object.assign(state.comm.indexConf,data);
+    },
+
   }
-})
+});
+
 
 export default store

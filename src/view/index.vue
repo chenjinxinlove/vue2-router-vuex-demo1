@@ -44,7 +44,7 @@
   },
   computed: {
     loading: function() {
-      return this.$store.state.comn.loading
+      return this.$store.state.comm.loading
     }
   },
   methods: {
